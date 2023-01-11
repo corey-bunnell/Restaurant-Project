@@ -54,6 +54,8 @@ function ReservationForm({
                 className="form-control"
                 id="mobile_number"
                 type="text"
+                placeholder="831-469-5968"
+                pattern="^\(?([0-9]{3})\)?[-.●]?([0-9]{3})[-.●]?([0-9]{4})$"
                 name="mobile_number"
                 required={true}
                 onChange={changeHandler}
