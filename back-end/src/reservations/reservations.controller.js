@@ -135,12 +135,17 @@ function validDate(req, res, next) {
 
   // Check to see if the reservation day is on a tuesday or if the date is in the past.
 
-  if (reservationWeekDay !== 2 && date - currentDate >= 0) {
+  if (reservationWeekDay === 2) {
+    return next({
+      status: 400,
+      message: `Invalid date. We are closed on tuesdays. Please choose another date`,
+    }) 
+  } else if (date - currentDate >= 0) {
     next();
   } else {
     return next({
       status: 400,
-      message: `Invalid date. Enter future date or later time that is not on a Tuesday when we are closed`,
+      message: `Invalid date. Enter future date or later time`,
     });
   }
 }
